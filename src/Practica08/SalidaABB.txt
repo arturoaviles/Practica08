@@ -1,0 +1,138 @@
+Insertando nodos recursivamente.
+
+***  Arbol con inserciones RECURSIVAS  ***
+
+
+Recorrido en inOrden: 0 2 3 4 5 10 13 16 19 34 38 42 50 57 60 75 78 85 94 99 110
+ 130 142 150
+
+Recorrido en preOrden: 60 13 2 0 10 5 3 4 19 16 34 50 42 38 57 85 75 78 94 110 9
+9 150 142 130
+
+Recorrido en postOrden: 0 4 3 5 10 2 16 38 42 57 50 34 19 13 78 75 99 130 142 15
+0 110 94 85 60
+
+
+***  Arbol con inserciones ITERATIVAS  ***
+
+
+Recorrido en inOrden: 0 2 3 4 5 6 7 10 11 13 14 16 19 20 22 27 30 32 34 35 36 38
+ 40 42 46 50 57 60 75 78 85 94 99 110 130 142 150
+
+Recorrido en preOrden: 60 13 2 0 10 5 3 4 7 6 11 19 16 14 34 20 32 27 22 30 50 4
+2 38 35 36 40 46 57 85 75 78 94 110 99 150 142 130
+
+Recorrido en postOrden: 0 4 3 6 7 5 11 10 2 14 16 22 30 27 32 20 36 35 40 38 46
+42 57 50 34 19 13 78 75 99 130 142 150 110 94 85 60
+
+
+***  Probando metodos CONTIENE  ***
+
+
+Contiene el arbol el dato 42 (Iterativo)?: SI
+
+Contiene el arbol el dato 34 (Recursivo)?: SI
+
+Contiene el arbol el dato 18 (Iterativo)?: NO
+
+Contiene el arbol el dato 84 (Recursivo)?: NO
+
+El arbol tiene 37 nodos y 14 hojas.
+
+
+***  Probando metodo HERMANO  ***
+
+
+El hermano de 75 es: 94
+
+El hermano de 60 es: null
+
+El hermano de 175 es: null
+
+El hermano de 57 es: 42
+
+El hermano de 5 es: 11
+
+
+***  Probando metodo PADRE  ***
+
+
+El padre de 75 es: 85
+
+El padre de 60 es: null
+
+El padre de 175 es: null
+
+El padre de 57 es: 50
+
+El padre de 5 es: 10
+
+
+***  Probando metodos MAYOR y MENOR  ***
+
+
+El mayor dato del arbol es: 150
+
+El menor dato del arbol es: 0
+
+
+***  Probando metodo ELIMINA  ***
+
+
+Borrando el 38 (nodo hoja): 0 2 3 4 5 6 7 10 11 13 14 16 19 20 22 27 30 32 34 35
+ 36 40 42 46 50 57 60 75 78 85 94 99 110 130 142 150
+
+Borrando el 57 (nodo hoja): 0 2 3 4 5 6 7 10 11 13 14 16 19 20 22 27 30 32 34 35
+ 36 40 42 46 50 60 75 78 85 94 99 110 130 142 150
+
+Borrando el 130 (nodo hoja): 0 2 3 4 5 6 7 10 11 13 14 16 19 20 22 27 30 32 34 3
+5 36 40 42 46 50 60 75 78 85 94 99 110 142 150
+
+Borrando el 34 (nodo con un hijo): 0 2 3 4 5 6 7 10 11 13 14 16 19 20 22 27 30 3
+2 35 36 40 42 46 50 60 75 78 85 94 99 110 142 150
+
+Borrando el 100 (nodo inexistente): 0 2 3 4 5 6 7 10 11 13 14 16 19 20 22 27 30
+32 35 36 40 42 46 50 60 75 78 85 94 99 110 142 150
+
+Borrando el 85 (nodo con dos hijos): 0 2 3 4 5 6 7 10 11 13 14 16 19 20 22 27 30
+ 32 35 36 40 42 46 50 60 75 78 94 99 110 142 150
+
+Borrando el 60 (nodo raiz): 0 2 3 4 5 6 7 10 11 13 14 16 19 20 22 27 30 32 35 36
+ 40 42 46 50 75 78 94 99 110 142 150
+
+
+***  Probando metodo CLEAR  ***
+
+
+Borrando todos los datos del arbol...
+
+
+Insertando el 85 (nodo raiz)...
+
+Recorrido en inOrden: 85
+
+Borrando el 85 (nodo raiz SIN hijos):
+
+Borrando todos los datos del arbol...
+
+
+Insertando el 36 (nodo raiz)...
+
+Insertando el 74 ...
+
+Recorrido en inOrden: 36 74
+
+Borrando el 36 (nodo raiz con hijo derecho): 74
+
+Borrando todos los datos del arbol...
+
+Insertando el 54 (nodo raiz)...
+
+Insertando el 22 ...
+
+Recorrido en inOrden: 22 54
+
+Borrando el 54 (nodo raiz con hijo izquierdo): 22
+
+
+
