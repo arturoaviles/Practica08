@@ -1,1 +1,57 @@
 Prueba 2, bitch
+
+git remote add [nombre] [https://.....]
+
+git add [nombre archivo]
+git commit -m'[mensaje]'
+git push -u [nombre del repositorio remoto] master
+
+
+package Practica08;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.TreeSet;
+
+public class AgendaTreeSet {
+	
+	public TreeSet<Contacto> agenda; 
+
+	public  AgendaTreeSet(TreeSet<Contacto> arbol){
+		Iterator<Contacto> iter = arbol.iterator();
+		
+		while(iter.hasNext()){
+			agenda.add(iter.next());
+		}
+	}
+	
+	public String contactos(){
+		String s= "";
+		Iterator<Contacto> iter = this.agenda.iterator();
+		
+		while(iter.hasNext()){
+			s+= iter.next().toString() + " ";
+		}
+		
+		return s;
+	}
+	
+	public boolean addContacto(Contacto c){
+		return false;
+	}
+	
+	public boolean eliminaContacto(Contacto c){
+		return false;
+	}	
+	
+	public boolean actualizarDir(Contacto c, String d){
+		return false;
+	}
+	
+	
+	public boolean agregarTelefono(Contacto c, ArrayList<String> tel){
+		return false;
+	}
+	
+	
+}
