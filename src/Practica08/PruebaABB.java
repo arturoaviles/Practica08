@@ -1,5 +1,7 @@
+package Practica08;
+
 /*
- * Clase de prueba de Arboles de búsqueda binaria
+ * Clase de prueba de Arboles de bï¿½squeda binaria
  * Autor: Angeles Junco
  */
  
@@ -105,7 +107,7 @@ public class PruebaABB {
     	
 		System.out.println("\n\n***  Probando metodo ELIMINA  *** \n");    	    	    	    	
 	   	p.eliminaDatoABB(38);
-    	System.out.println("\nBorrando el 38 (nodo hoja): " + p.inOrden());
+    	System.out.println("\nBorrando el 38 (dos hijos): " + p.inOrden());
     	
 	   	p.eliminaDatoABB(57);
     	System.out.println("\nBorrando el 57 (nodo hoja): " + p.inOrden());
@@ -160,8 +162,7 @@ public class PruebaABB {
 		System.out.println("\nRecorrido en inOrden: " + p.inOrden());
     	p.eliminaDatoABB(54);
     	System.out.println("\nBorrando el 54 (nodo raiz con hijo izquierdo): " + p.inOrden());
-   
-
+        
     	System.out.println("\n\n");
     	   
      }     
