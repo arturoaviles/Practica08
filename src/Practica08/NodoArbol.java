@@ -1,3 +1,4 @@
+package Practica08;
 /*
  * Clase NodoArbol
  * Autor: Angeles Junco

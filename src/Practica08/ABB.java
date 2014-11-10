@@ -15,13 +15,13 @@ public class ABB <T extends Comparable <? super T>> {
 	
 		
 // Constructor que coloca la raiz en null indicando
-// que el árbol YA existe pero está vacío
+// que el ï¿½rbol YA existe pero estï¿½ vacï¿½o
 	ABB () {
 		this.raiz = null;
-	
 	}
 	
 	
+       
 // Verifica si el arbol esta vacio o no	
 	public boolean isEmpty() {
 		if (this.raiz == null)
@@ -35,7 +35,6 @@ public class ABB <T extends Comparable <? super T>> {
 // Elimina los datos del arbol
 	public void clear() {
 		this.raiz = null;
-		
 	}
 	
 	
@@ -59,8 +58,7 @@ public class ABB <T extends Comparable <? super T>> {
 				if(i < 0)  pos = temp.der;
 			}
 			if(i > 0) temp.izq = noDato;
-			if(i <0) temp.der = noDato;
-				
+			if(i <0) temp.der = noDato;		
 		}
 		
 	}
@@ -100,21 +98,19 @@ public class ABB <T extends Comparable <? super T>> {
 			else
 				insertaABBUtil(nodo.der, dato);
 		}
-		
-		
 	}
 
 	
 // Metodo que regresa una cadena con el recorrido EN ORDEN del ABB		
 	public String inOrden() {
 		return inOrdenUtil(this.raiz, "");
-		
 	}
 	
 	
 // Metodo de utileria para apoyar al metodo EN ORDEN 
 	private String inOrdenUtil(NodoArbol <T> nodo, String s) {
 		if(nodo != null){
+                        
 			s += inOrdenUtil(nodo.izq, "");
 			s+= nodo.dato.toString() + " ";
 			s += inOrdenUtil(nodo.der, "");
@@ -157,7 +153,7 @@ public class ABB <T extends Comparable <? super T>> {
 	}
 		
 			
-// Metodo que regresa el nodo predecesor al nodo que se recibe de parámetro
+// Metodo que regresa el nodo predecesor al nodo que se recibe de parï¿½metro
 	private NodoArbol <T> predecesor(NodoArbol <T> nodo) {
 		if(nodo == null)
 			return null;
@@ -172,7 +168,7 @@ public class ABB <T extends Comparable <? super T>> {
 	}
 
     
-// Metodo que regresa el nodo sucesor al nodo que se recibe de parámetro
+// Metodo que regresa el nodo sucesor al nodo que se recibe de parï¿½metro
    	private NodoArbol <T> sucesor(NodoArbol<T> nodo) {
    		if(nodo == null)
 			return null;
@@ -208,7 +204,6 @@ public class ABB <T extends Comparable <? super T>> {
     		temp = temp.izq;
     	}
     	return temp.dato;
-
     }
 
 
@@ -217,7 +212,6 @@ public class ABB <T extends Comparable <? super T>> {
     	if(this.raiz == null)
     		return 0;
     	return getTotalNodosTerminalesUtil(this.raiz, 0);
-    	
     }
     
 // Metodo de utileria para apoyar el metodo que regresa el total de 
@@ -252,21 +246,49 @@ public class ABB <T extends Comparable <? super T>> {
     }
     
 
-// Metodo que regresa el hermano, en el ABB, del dato T que se recibe de parámetro    	    
+// Metodo que regresa el hermano, en el ABB, del dato T que se recibe de parï¿½metro    	    
     public T getHermanoABBRecursivo (T dato) {
-    	return null;
-    	
+    	if(this.raiz == null)
+    		return null;
+    	return(getHermanoABBUtil(this.raiz, dato));
 	}
     
 
 // Metodo de utileria para apoyar al metodo que regresa el hermano, en el ABB, 
-// del dato T que se recibe de parámetro    	    
-    private T getHermanoABBUtil(NodoArbol <T> nodo, T dato) {    
-    	return null;
+// del dato T que se recibe de parï¿½metro    	    
+    private T getHermanoABBUtil(NodoArbol <T> nodo, T dato) {   
+    	int i;
+        
+    	if(nodo == null || nodo.dato == null)
+    		return null;
+        
+    	if(containsABBRecursivo(dato) == false)
+    		return null;
+        
+    	if(dato == this.raiz.dato)
+    		return null;
+    	
+    	if(nodo.der.dato.compareTo(dato) == 0){
+    		if(nodo.izq == null)
+    			return null;
+    		return nodo.izq.dato;
+    	}
+    	if(nodo.izq.dato.compareTo(dato) == 0 ){
+    		if(nodo.der == null)
+    			return null;
+    		return nodo.der.dato;
+    	}
+    	else{
+    		i = nodo.dato.compareTo(dato);
+    		if(i > 0)
+    			return getHermanoABBUtil(nodo.izq, dato);
+    		else
+    			return getHermanoABBUtil(nodo.der, dato);
+    	}
     }
 
 
-// Metodo que regresa el padre, en el ABB, del dato T que se recibe de parámetro    	    
+// Metodo que regresa el padre, en el ABB, del dato T que se recibe de parï¿½metro    	    
     public T getPadreABBRecursivo (T dato) {
     	if(this.raiz == null || this.raiz.dato.compareTo(dato)==0)
     		return null;
@@ -275,7 +297,7 @@ public class ABB <T extends Comparable <? super T>> {
     
 
 // Metodo de utileria para apoyar al metodo que regresa el padre, en el ABB, 
-// del dato T que se recibe de parámetro    	    
+// del dato T que se recibe de parï¿½metro    	    
     private T getPadreABBUtil (NodoArbol <T> nodo, T dato) {
     	if(nodo == null)
     		return null;
@@ -291,7 +313,7 @@ public class ABB <T extends Comparable <? super T>> {
     }
 
 
-// Metodo que regresa TRUE si el dato T, del parámetro, se encuentra en el ABB
+// Metodo que regresa TRUE si el dato T, del parï¿½metro, se encuentra en el ABB
 // y FALSE en caso contrario    
     public boolean containsABBRecursivo(T dato) {
     	if(this.raiz == null)
@@ -302,7 +324,7 @@ public class ABB <T extends Comparable <? super T>> {
     
 
 // Metodo de utileria que apoya al metodo que regresa TRUE si el dato T, 
-// del parámetro, se encuentra en el ABB y FALSE en caso contrario    
+// del parï¿½metro, se encuentra en el ABB y FALSE en caso contrario    
     private boolean containsABBUtil(NodoArbol <T> nodo, T dato) {
     	if(nodo == null)
     		return false;
@@ -318,23 +340,154 @@ public class ABB <T extends Comparable <? super T>> {
     }
 
 
-// Metodo ITERATIVO que regresa TRUE si el dato T, del parámetro, 
+// Metodo ITERATIVO que regresa TRUE si el dato T, del parï¿½metro, 
 // se encuentra en el ABB y FALSE en caso contrario    
     public boolean containsABBIterativo(T dato) {
+    	NodoArbol<T> temp = new NodoArbol<T>();
+    	
+    	temp = this.raiz;
+    	int i;
+    	
+    	while(temp != null){
+    		if(temp.dato == dato)
+    			return true;
+    		
+    		i= temp.dato.compareTo(dato);
+    		
+    		if(i > 0)
+    			temp = temp.izq;
+    		
+    		else
+    			temp = temp.der;
+    	}
     	
 		return false;
     }
     
 
-// Metodo RECURSIVO que elimina un dato del árbol 
+// Metodo RECURSIVO que elimina un dato del ï¿½rbol 
     public boolean eliminaDatoABB(T dato){
-    	return false;
+    	//NodoArbol<T> nodo = new NodoArbol<T>(dato);
+    	if(this.raiz == null)
+            return false;
+            
+        else
+            eliminaDatoABBUtil(this.raiz, dato);
+        
+        return false;
     }
     
     
-// Metodo RECURSIVO que elimina un dato del árbol
+// Metodo RECURSIVO que elimina un dato del ï¿½rbol
     private boolean eliminaDatoABBUtil(NodoArbol<T> nodo, T dato){
-    	return false;
-    }
+        NodoArbol<T> temp;
+        
+        if(nodo==null) return false;
+        
+        if(nodo.dato==null) return false;
 
+        int i = nodo.dato.compareTo(dato);
+        
+        if(i==0){
+            // Si es un nodo hoja
+            if(nodo.izq == null && nodo.der == null){
+                if(nodo==this.raiz){
+                    this.raiz=null; 
+                    return true;
+                }
+                temp = getNodoPadreABBRecursivo(dato);
+                if(temp.izq.dato.compareTo(dato)==0) 
+                    temp.izq = null;
+                
+                else 
+                    temp.der = null; 
+                return true;
+            }
+            
+            else{
+                if(nodo.izq != null || nodo.der!= null){
+                    temp = getNodoPadreABBRecursivo(nodo.dato);
+                    
+                    if(nodo.izq == null && nodo.der != null){
+                        // no hay papÃ¡
+                        if(this.raiz.dato==nodo.dato && nodo.izq==null){
+                            this.raiz=nodo.der;
+                            return true;
+                        }
+                        
+                        else{
+                        // papa va a adoptar al hijo derecho
+                            i = temp.dato.compareTo(nodo.dato);
+                            if (i > 0){
+                                temp.izq=nodo.der;
+                                return true;
+                            }
+                        
+                            else{
+                                temp.der = nodo.der;
+                                return true;
+                            }
+                        }
+                    }
+                    //else
+                    if(nodo.izq != null && nodo.der == null){
+                        // no hay papa
+                        if(this.raiz.dato==nodo.dato && nodo.der==null){
+                            this.raiz=nodo.izq;
+                        }
+                        
+                        // papa va a adoptar al hijo izq
+                        else{
+                            i = temp.dato.compareTo(nodo.dato);
+                            if (i > 0){
+                                temp.izq=nodo.izq;
+                                return true;
+                                }
+                            else{
+                                temp.der = nodo.izq;
+                                return true;
+                            }
+                        }
+                    }
+                    
+                        //else{    
+                    if(nodo.izq != null && nodo.der != null){
+                        temp = sucesor(nodo);
+                        T var = temp.dato;
+                        eliminaDatoABB(temp.dato);
+                        nodo.dato=var; 
+                        return true;
+                    }
+                }
+            }
+        }
+        if(i > 0)
+            return eliminaDatoABBUtil(nodo.izq, dato);
+
+        else
+            return eliminaDatoABBUtil(nodo.der, dato); 
+    }
+     
+
+    
+    private NodoArbol <T> getNodoPadreABBRecursivo (T dato) {
+    	if(this.raiz == null || this.raiz.dato.compareTo(dato)==0)
+    		return null;
+    	return getNodoPadre(this.raiz, dato);
+    }
+    
+    private NodoArbol <T> getNodoPadre(NodoArbol<T> nodo, T dato){
+        if(nodo == null)
+    		return null;
+    	if(nodo.der != null && nodo.der.dato.compareTo(dato) == 0 || nodo.izq != null && nodo.izq.dato.compareTo(dato) == 0)
+    		return nodo;
+    	
+    	int i = nodo.dato.compareTo(dato);
+    	
+    	if(i > 0)
+    		return getNodoPadre(nodo.izq, dato);
+    	else
+    		return getNodoPadre(nodo.der, dato);
+            
+        }
 }
