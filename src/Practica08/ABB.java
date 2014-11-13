@@ -1,12 +1,12 @@
 package Practica08;
 
 /*
- * Clase ABB - Estructuras de datos
- * Autor:
- * Matricula:
- * Autor:
- * Matricula:
- */
+	Clase ABB.java
+	Autor 1: Arturo Avilés Castellanos  A01372760
+	Autor 2: Yael Araizaga Gracia  A01166495
+	Fecha:  10 de Noviembre de 2014
+	Practica # 8 - Arboles
+*/
 
 public class ABB <T extends Comparable <? super T>> {
 

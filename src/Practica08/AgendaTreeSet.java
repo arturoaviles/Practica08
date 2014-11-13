@@ -1,12 +1,18 @@
 package Practica08;
 
+/*
+	Clase AgendaTreeSet.java
+	Autor 1: Arturo Avilés Castellanos  A01372760
+	Autor 2: Yael Araizaga Gracia  A01166495
+	Fecha:  10 de Noviembre de 2014
+	Practica # 8 - Arboles
+*/
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.TreeSet;
-/**
- *
- * @author arturoavilescastellanos
- */
+
+
 public class AgendaTreeSet {
     public TreeSet<Contacto> agenda; 
 
