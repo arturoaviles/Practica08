@@ -1,0 +1,187 @@
+// IMPLEMENTAR	
+	public static TreeMap<Integer, Alumno> leerAlumnos(String nombreArchivo) throws FileNotFoundException{
+		
+		Scanner sc = new Scanner(new FileReader(nombreArchivo));
+		TreeMap<Integer, Alumno> arbol = new TreeMap<Integer, Alumno>();
+		Alumno alumno;
+		String nombre, apellido;
+		Integer matricula;
+		
+		try {
+		// CODIGO DE LECTURA DE ARCHIVO
+		while(sc.hasNext()){
+			nombre = sc.next();
+			apellido = sc.next();
+			matricula = new Integer(sc.nextInt());
+			 
+			alumno = new Alumno(nombre, apellido, matricula);
+			
+			arbol.put(matricula, alumno);
+			
+		}
+		
+		
+		} catch (InputMismatchException e) {
+			 System.err.println(e);
+		} catch (java.util.NoSuchElementException e){
+			 System.err.println(e);
+		}
+		finally{
+			 sc.close();   	
+      	}
+		
+		return arbol;
+	}
+
+
+	
+// IMPLEMENTAR
+	public static TreeMap<Integer, TreeMap<String, Integer>> leerAlumnosMaterias(String nombreArchivo) throws FileNotFoundException{
+		
+		Scanner sc = new Scanner(new FileReader(nombreArchivo));
+		 TreeMap<Integer, TreeMap<String, Integer>> superArbol = new TreeMap<Integer, TreeMap<String, Integer>>();
+		 TreeMap<String, Integer> arbolito;
+		 Integer mat, cali;
+		 String clave;
+		 
+		
+		try {
+		// CODIGO DE LECTURA DE ARCHIVO
+			while(sc.hasNext()){
+				arbolito = new TreeMap<String, Integer>();
+				mat = new Integer(sc.nextInt());
+				clave = sc.next();
+				cali = new Integer(sc.nextInt());
+				
+				if(!superArbol.containsKey(mat)){
+					arbolito.put(clave, cali);
+					//System.out.println(cali.toString());
+					superArbol.put(mat, arbolito);
+				}
+				else{
+					arbolito = superArbol.get(mat);
+					arbolito.put(clave, cali);
+				}
+			}
+		
+		
+		} catch (InputMismatchException e) {
+			 System.err.println(e);
+		} catch (java.util.NoSuchElementException e){
+			 System.err.println(e);
+		}
+		finally{
+			 sc.close();   	
+      	}
+		
+		return superArbol;
+	}
+
+
+
+// IMPLEMENTAR
+	public static void 
+	imprimeAlumnosMaterias(TreeMap<Integer, TreeMap<String, Integer>> mapa) {
+		String calificacion;
+		
+		Set<Map.Entry<Integer, TreeMap<String, Integer>>> superset = mapa.entrySet();
+		
+		Iterator<Map.Entry<Integer, TreeMap<String, Integer>>> it = superset.iterator();
+		
+		while(it.hasNext()){
+			Map.Entry<Integer, TreeMap<String, Integer>> currEntry = it.next();
+			
+			System.out.println("\n***  Matricula Alumno : " + currEntry.getKey() + " *** \n");
+			
+			System.out.println("Clave materias y calificacion: \n");
+			
+			
+			Set<Map.Entry<String, Integer>> set = currEntry.getValue().entrySet();
+			
+			Iterator<Map.Entry<String, Integer>> iter = set.iterator();
+			
+			while(iter.hasNext()){
+				Map.Entry<String, Integer> materia = iter.next();
+				
+				System.out.println(materia.getKey() + " " + materia.getValue().toString() + " ");
+			}
+			
+			System.out.println("\n");
+
+		}
+	
+	}
+	
+
+
+// IMPLEMENTAR
+	public static String promedioAlumno (Boolean  bandera, TreeMap<Integer, TreeMap<String, Integer>> tmapAlumnoMat) {
+		String s= "";
+		double promedio = 0.0;
+		double mejor, peor;
+		String alumnoTarget;
+		
+		//set e iterador del primer tree
+		Set<Map.Entry<Integer, TreeMap<String, Integer>>> superset = tmapAlumnoMat.entrySet();
+		Iterator<Map.Entry<Integer, TreeMap<String, Integer>>> it = superset.iterator();
+		Map.Entry<Integer, TreeMap<String, Integer>> alumno;
+		
+		alumno = it.next();
+		
+		//set e iterador del segundo tree
+		Set<Map.Entry<String, Integer>> set = alumno.getValue().entrySet();
+		alumnoTarget = alumno.getKey().toString();
+		Iterator<Map.Entry<String, Integer>> iter = set.iterator();
+		
+		while(iter.hasNext()){
+			Map.Entry<String, Integer> materias = iter.next();
+			promedio += materias.getValue();
+		}
+		promedio = promedio / set.size();
+		mejor = promedio;
+		peor = promedio;
+		
+
+
+		if(bandera){
+			while(it.hasNext()){
+				promedio = 0.0;
+				alumno = it.next();
+				set = alumno.getValue().entrySet();
+				iter = set.iterator();
+				
+				while(iter.hasNext()){
+					Map.Entry<String, Integer> materias = iter.next();
+					promedio += materias.getValue();
+				}
+				promedio = promedio / set.size();
+				
+				if(promedio > mejor){
+					mejor = promedio;
+					alumnoTarget = alumno.getKey().toString();
+				}
+			}
+			
+			return "Matricula : " + alumnoTarget + " Promedio: " + mejor;
+		}
+		else{	
+			while(it.hasNext()){
+				promedio = 0.0;
+				alumno = it.next();
+				set = alumno.getValue().entrySet();
+				iter = set.iterator();
+				
+				while(iter.hasNext()){
+					Map.Entry<String, Integer> materias = iter.next();
+					promedio += materias.getValue();
+				}
+				promedio = promedio / set.size();
+				
+				if(promedio < peor){
+					peor = promedio;
+					alumnoTarget = alumno.getKey().toString();
+				}
+			}
+		return "Matricula : " + alumnoTarget + " Promedio: " + peor;
+		}
+	}
